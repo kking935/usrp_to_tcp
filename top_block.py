@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Mon Jul  8 10:47:47 2019
+# Generated: Thu Jul 11 12:40:30 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -22,6 +22,7 @@ from gnuradio import filter
 from gnuradio import gr
 from gnuradio import uhd
 from gnuradio import wxgui
+from gnuradio import zeromq
 from gnuradio.eng_option import eng_option
 from gnuradio.fft import window
 from gnuradio.filter import firdes
@@ -36,6 +37,8 @@ class top_block(grc_wxgui.top_block_gui):
 
     def __init__(self):
         grc_wxgui.top_block_gui.__init__(self, title="Top Block")
+        _icon_path = "/usr/share/icons/hicolor/32x32/apps/gnuradio-grc.png"
+        self.SetIcon(wx.Icon(_icon_path, wx.BITMAP_TYPE_ANY))
 
         ##################################################
         # Variables
@@ -45,6 +48,7 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         # Blocks
         ##################################################
+        self.zeromq_rep_sink_0 = zeromq.rep_sink(gr.sizeof_float, 1, 'tcp://*:9005', 100, False, -1)
         self.wxgui_fftsink2_0_0 = fftsink2.fft_sink_c(
         	self.GetWin(),
         	baseband_freq=0,
@@ -90,7 +94,6 @@ class top_block(grc_wxgui.top_block_gui):
         self.uhd_usrp_source_0.set_gain(100, 0)
         self.fir_filter_xxx_0 = filter.fir_filter_ccc(1, (11, ))
         self.fir_filter_xxx_0.declare_sample_delay(0)
-        self.blocks_tcp_server_sink_0 = blocks.tcp_server_sink(gr.sizeof_float*1, '127.0.0.1', 9005, True)
         self.blocks_nlog10_ff_0 = blocks.nlog10_ff(10, 1, 0)
         self.blocks_moving_average_xx_0 = blocks.moving_average_ff(1000, 1, 4000, 1)
         self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_float*1, 'power_raw', False)
@@ -105,7 +108,7 @@ class top_block(grc_wxgui.top_block_gui):
         self.connect((self.blocks_complex_to_mag_squared_0, 0), (self.blocks_moving_average_xx_0, 0))
         self.connect((self.blocks_moving_average_xx_0, 0), (self.blocks_nlog10_ff_0, 0))
         self.connect((self.blocks_nlog10_ff_0, 0), (self.blocks_file_sink_0, 0))
-        self.connect((self.blocks_nlog10_ff_0, 0), (self.blocks_tcp_server_sink_0, 0))
+        self.connect((self.blocks_nlog10_ff_0, 0), (self.zeromq_rep_sink_0, 0))
         self.connect((self.fir_filter_xxx_0, 0), (self.blocks_complex_to_mag_squared_0, 0))
         self.connect((self.fir_filter_xxx_0, 0), (self.wxgui_fftsink2_0_0, 0))
         self.connect((self.uhd_usrp_source_0, 0), (self.fir_filter_xxx_0, 0))

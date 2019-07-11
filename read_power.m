@@ -1,7 +1,7 @@
 clear;
 clc;
 fid = fopen("power_raw", 'rb');
-fid2 = fopen("power_verify", 'rb');
+fid2 = fopen("power_zmq", 'rb');
 v = fread(fid, Inf, "float");
 c = fread(fid2, Inf, "float");
 count = length(v);

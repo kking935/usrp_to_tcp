@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.12'?>
+<?grc format='1' created='3.7.13'?>
 <flow_graph>
   <timestamp>Tue Jun 25 13:10:07 2019</timestamp>
   <block>
@@ -136,7 +136,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(656, 56)</value>
+      <value>(640, 72)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -187,7 +187,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(728, 292)</value>
+      <value>(792, 340)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -289,7 +289,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(800, 180)</value>
+      <value>(808, 172)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -344,11 +344,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(608, 388)</value>
+      <value>(544, 396)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -395,7 +395,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(248, 52)</value>
+      <value>(248, 60)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1610,7 +1610,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(80, 244)</value>
+      <value>(0, 372)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1908,7 +1908,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(648, 500)</value>
+      <value>(648, 484)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1971,6 +1971,61 @@
       <value>10</value>
     </param>
   </block>
+  <block>
+    <key>zeromq_rep_sink</key>
+    <param>
+      <key>address</key>
+      <value>tcp://*:9005</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(344, 260)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>hwm</key>
+      <value>-1</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>zeromq_rep_sink_0</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>pass_tags</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>timeout</key>
+      <value>100</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+  </block>
   <connection>
     <source_block_id>blocks_complex_to_mag_squared_0</source_block_id>
     <sink_block_id>blocks_moving_average_xx_0</sink_block_id>
@@ -1992,6 +2047,12 @@
   <connection>
     <source_block_id>blocks_nlog10_ff_0</source_block_id>
     <sink_block_id>blocks_tcp_server_sink_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_nlog10_ff_0</source_block_id>
+    <sink_block_id>zeromq_rep_sink_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
