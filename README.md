@@ -1,1 +1,2 @@
 #usrp_to_tcp
+The purpose of this repository is to output live radio power data to a port within the device using libUHD, GNU Radio and ZeroMQ. It should be noted that this program is from a larger spanning project that's goal is to mount a radio with a built-in computer to several drones, programming the computers such that they use the radios to establish a private network among eachother and use optimization algorithms to direct each respective drone to the position that produces the strongest signal stength for the overall network.  
