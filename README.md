@@ -1,2 +1,34 @@
-#usrp_to_tcp
-The purpose of this repository is to output live radio power data to a port within the device using libUHD, GNU Radio and ZeroMQ. It should be noted that this program is from a larger spanning project that's goal is to mount a radio with a built-in computer to several drones, programming the computers such that they use the radios to establish a private network among eachother and use optimization algorithms to direct each respective drone to the position that produces the strongest signal stength for the overall network.  
+#Description
+
+This program facilitates a basic radio link between two USRB B205 Mini SDRs.
+
+The GNURadio receiver program reads power from the radio using libUHD and outputs it to a ZeroMQ socket.
+
+This is part of a larger project which uses the radio signal strength to optimize drone position in a self-forming aerial network.
+
+
+
+#Setup Instructions
+
+```
+sudo apt install gnuradio libuhd-dev
+
+sudo /usr/lib/uhd/utils/uhd_images_downloader.py
+
+export UHD_IMAGES_DIR=/usr/share/uhd/images
+
+uhd_find_devices
+```
+
+Copy the serial ID
+
+```
+gnuradio-companion
+```
+
+Open the *.grc flowgraph file from this repository (one for each radio)
+
+Paste the serial ID into the USRP block
+
+Press play to run the flowgraph
+
