@@ -17,18 +17,18 @@ sudo /usr/lib/uhd/utils/uhd_images_downloader.py
 
 export UHD_IMAGES_DIR=/usr/share/uhd/images
 
-uhd_find_devices
-```
-
-Copy the serial ID
-
-```
 gnuradio-companion
 ```
 
 Open the *.grc flowgraph file from this repository (one for each radio)
 
-Paste the serial ID into the USRP block
-
 Press play to run the flowgraph
 
+
+
+
+If you want to run multiple radios on the same computer for testing, use 
+```
+uhd_find_devices
+```
+and copy the serial ID into the flowgraph UDH block
