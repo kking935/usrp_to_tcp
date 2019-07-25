@@ -1,4 +1,4 @@
-#Description
+# Description
 
 This program facilitates a basic radio link between two USRB B205 Mini SDRs.
 
@@ -8,7 +8,7 @@ This is part of a larger project which uses the radio signal strength to optimiz
 
 
 
-#Setup Instructions
+# Setup Instructions
 
 ```
 sudo apt install gnuradio libuhd-dev
