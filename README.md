@@ -13,9 +13,18 @@ This is part of a larger project which uses the radio signal strength to optimiz
 ```
 sudo apt install gnuradio libuhd-dev
 
+
 sudo /usr/lib/uhd/utils/uhd_images_downloader.py
 
 export UHD_IMAGES_DIR=/usr/share/uhd/images
+
+
+sudo cp /usr/lib/uhd/utils/uhd-usrp.rules /etc/udev/rules.d/
+
+sudo udevadm control --reload-rules
+
+sudo udevadm trigger
+
 
 gnuradio-companion
 ```
