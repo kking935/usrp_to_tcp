@@ -20,15 +20,14 @@ export UHD_IMAGES_DIR=/usr/share/uhd/images
 gnuradio-companion
 ```
 
-Open the *.grc flowgraph file from this repository (one for each radio)
+Open the *.grc flowgraph files from this repository
 
-Press play to run the flowgraph
-
-
-
-
-If you want to run multiple radios on the same computer for testing, use 
+In a seperate terminal, use
 ```
 uhd_find_devices
 ```
-and copy the serial ID into the flowgraph UDH block
+to find the serial IDs of all the usrps connected to this computer
+
+Copy the desired serial ID and paste it into the usrp_ID variable block for each *.grc flowgraph files 
+
+Finally, press play to run the flowgraph
