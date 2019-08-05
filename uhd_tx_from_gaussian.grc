@@ -132,7 +132,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>32000</value>
+      <value>5120000</value>
     </param>
   </block>
   <block>
