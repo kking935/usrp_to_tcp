@@ -20,9 +20,9 @@ export UHD_IMAGES_DIR=/usr/share/uhd/images
 gnuradio-companion
 ```
 
-Open the *.grc flowgraph files from this repository
+Within the GNU Radio Companion, open the *.grc flowgraph files from this repository
 
-In a seperate terminal, use
+In a seperate terminal, run
 ```
 uhd_find_devices
 ```
@@ -30,4 +30,6 @@ to find the serial IDs of all the usrps connected to this device
 
 Copy the desired IDs and paste each into the usrp_ID variable block of their respective *.grc flowgraph files
 
-Finally, press the play button to run the usrp_tx_from_gaussian flowgraph file
+In the usrp_tx_from_gaussian flowgraph file, press the green play button to start trasmitting gaussian noise.
+
+Finally, in the usrp_rx_to_power flowgraph file, press the green play button to begin receiving the signal and outputting its power to a ZeroMQ socket.
