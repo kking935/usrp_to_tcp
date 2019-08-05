@@ -13,22 +13,32 @@ This is part of a larger project which uses the radio signal strength to optimiz
 ```
 sudo apt install gnuradio libuhd-dev
 
+
 sudo /usr/lib/uhd/utils/uhd_images_downloader.py
 
 export UHD_IMAGES_DIR=/usr/share/uhd/images
 
+
+sudo cp /usr/lib/uhd/utils/uhd-usrp.rules /etc/udev/rules.d/
+
+sudo udevadm control --reload-rules
+
+sudo udevadm trigger
+
+
 gnuradio-companion
 ```
 
-Open the *.grc flowgraph file from this repository (one for each radio)
+Within the GNU Radio Companion, open the *.grc flowgraph files from this repository
 
-Press play to run the flowgraph
-
-
-
-
-If you want to run multiple radios on the same computer for testing, use 
+In a seperate terminal, run
 ```
 uhd_find_devices
 ```
-and copy the serial ID into the flowgraph UDH block
+to find the serial IDs of all the usrps connected to this device
+
+Copy the desired IDs and paste each into the usrp_ID variable block of their respective *.grc flowgraph files
+
+In the usrp_tx_from_gaussian flowgraph file, press the green play button to start trasmitting gaussian noise.
+
+Finally, in the usrp_rx_to_power flowgraph file, press the green play button to begin receiving the signal and outputting its power to a ZeroMQ socket.

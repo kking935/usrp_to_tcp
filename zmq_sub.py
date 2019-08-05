@@ -11,25 +11,32 @@ import durip.msg
 context = zmq.Context()
 socket = context.socket(zmq.REQ)
 
-print "Collecting updates..."
 socket.connect ("tcp://localhost:9005")
-print("Connected")
+rospy.loginfo("Connected")
+
+rospy.init_node('uhdRX', disable_signals=True) #enable signals before integrating with main ROS code
+
+rssi_pub = rospy.Publisher("rssi", durip.msg.rssiMsg, queue_size = 1)
+
+rssiVal = 0
 
 
-r = rospy.rate(100)
-rssi_pub = rospy.publisher("rssi", durip.msg.rssiMsg)
+def rosPub(event):
+	pubMsg = durip.msg.rssiMsg(timestamp=rospy.Time.now().secs, rssi=rssiVal)
+        rssi_pub.publish(pubMsg)
+
+
+rospy.Timer(rospy.Duration(0.01), rosPub)
 
 while True:
-        socket.send("request")
-        try:
-                x=struct.unpack('f', socket.recv()[0:4])[0]
-                pubMsg = durip.msg.rssiMsg(timestamp=rospy.Time.now().secs, rssi=x)
-                rssi_pub.publish(pubMsg)
-        except:
-                pass
-
-        r.sleep()
-
-
-
+	try:
+       		socket.send("request")
+		tcp_data=socket.recv()
+		rssiVal=struct.unpack('f', tcp_data[0:4])[0]
+	except KeyboardInterrupt:
+		break
+	except:
+		pass
+socket.close()
+context.term()
 
