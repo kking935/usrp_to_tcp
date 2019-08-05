@@ -26,8 +26,8 @@ In a seperate terminal, use
 ```
 uhd_find_devices
 ```
-to find the serial IDs of all the usrps connected to this computer
+to find the serial IDs of all the usrps connected to this device
 
-Copy the desired serial ID and paste it into the usrp_ID variable block for each *.grc flowgraph files 
+Copy the desired IDs and paste each into the usrp_ID variable block of their respective *.grc flowgraph files
 
-Finally, press play to run the flowgraph
+Finally, press the play button to run the usrp_tx_from_gaussian flowgraph file
