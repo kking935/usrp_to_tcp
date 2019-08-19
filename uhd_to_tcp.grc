@@ -105,7 +105,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>5805e6</value>
+      <value>5832e6</value>
     </param>
   </block>
   <block>
@@ -132,7 +132,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>5120000</value>
+      <value>32000</value>
     </param>
   </block>
   <block>
@@ -367,11 +367,11 @@
     </param>
     <param>
       <key>norm_gain0</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>gain0</key>
-      <value>100</value>
+      <value>1.0</value>
     </param>
     <param>
       <key>ant10</key>
@@ -1243,7 +1243,7 @@
     </param>
     <param>
       <key>clock_rate</key>
-      <value>30.72e6</value>
+      <value>0.0</value>
     </param>
     <param>
       <key>comment</key>
@@ -1533,7 +1533,7 @@
     </param>
     <param>
       <key>baseband_freq</key>
-      <value>0</value>
+      <value>freq</value>
     </param>
     <param>
       <key>alias</key>
